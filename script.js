@@ -1,17 +1,20 @@
 const hero = document.querySelector('.hero');
 const text = hero.querySelector('h1');
 // console.dir(hero.offsetWidth);
-const walk = 100; //100px
+const walk = 500; //100px
 
 function shadow(e) {
   // console.log(e);
   const { offsetWidth: width, offsetHeight: height } = hero;
+  // console.log(width, height);
   let { offsetX: x, offsetY: y } = e;
-  // console.log(x, y);
+  // console.log(this, e.target);
   if (this !== e.target) {
     x = x + e.target.offsetLeft;
     y = y + e.target.offsetTop;
   }
+  // console.log(x, y);
+
   const xWalk = Math.round((x / width) * walk - walk / 2);
   const yWalk = Math.round((y / height) * walk - walk / 2);
   console.log(xWalk, yWalk);
@@ -21,6 +24,8 @@ function shadow(e) {
   ${yWalk}px ${xWalk * -1}px 0 rgba(0, 255, 0, 0.7),
   ${yWalk * -1}px ${xWalk}px 0 rgba(0, 0, 255, 0.7)
   `;
+  //
+  //
 }
 
 hero.addEventListener('mousemove', shadow);
